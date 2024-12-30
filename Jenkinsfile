@@ -51,10 +51,11 @@ stage('Lint') {
                 bat '''
                 set PATH=%SONAR_SCANNER_PATH%;%PATH%
                 where sonar-scanner || echo "SonarQube scanner not found. Please install it."
-                sonar-scanner -Dsonar.projectKey=react-form ^
-                    -Dsonar.sources=. ^
-                    -Dsonar.host.url=http://localhost:9000 ^
-                    -Dsonar.token=%SONAR_TOKEN% 2>&1
+                sonar-scanner.bat 
+                -D"sonar.projectKey=react-form" 
+                -D"sonar.sources=." 
+                -D"sonar.host.url=http://localhost:9000" 
+                -D"sonar.token=sqp_fa35ac138a204adcbe4f395b52f518cbd0a1e3f6"
                 '''
             }
         }
