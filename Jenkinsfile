@@ -48,15 +48,15 @@ stage('Lint') {
             }
             steps {
                 // Ensure that sonar-scanner is in the PATH
-                bat '''
-                set PATH=%SONAR_SCANNER_PATH%;%PATH%
-                where sonar-scanner || echo "SonarQube scanner not found. Please install it."
-                sonar-scanner.bat 
-                -D"sonar.projectKey=react-form" 
-                -D"sonar.sources=." 
-                -D"sonar.host.url=http://localhost:9000" 
-                -D"sonar.token=sqp_fa35ac138a204adcbe4f395b52f518cbd0a1e3f6"
-                '''
+                 bat '''
+            set PATH=%SONAR_SCANNER_PATH%;%PATH%
+            where sonar-scanner || echo "SonarQube scanner not found. Please install it."
+            sonar-scanner.bat ^
+            -Dsonar.projectKey=react-form ^
+            -Dsonar.sources=. ^
+            -Dsonar.host.url=http://localhost:9000 ^
+            -Dsonar.login=%SONAR_TOKEN%
+        '''
             }
         }
     }
